@@ -1,0 +1,37 @@
+<mat-progress-bar mode="determinate" [value]="score"></mat-progress-bar>
+<div>
+  <h1>Level: {{ maxNumber }}</h1>
+</div>
+<div class="main" *ngIf="score < 100">
+  <mat-card *ngIf="isCorrect == null">
+    <mat-card-title>Question {{ questionNumber }}</mat-card-title>
+    <div>What is {{ first }} + {{ second }}?</div>
+    <mat-card-actions>
+      <button mat-stroked-button (click)="onAnswer(answer1)">
+        {{ answer1 }}
+      </button>
+      <button mat-stroked-button (click)="onAnswer(answer2)">
+        {{ answer2 }}
+      </button>
+      <button mat-stroked-button (click)="onAnswer(answer3)">
+        {{ answer3 }}
+      </button>
+      <button mat-stroked-button (click)="onAnswer(answer4)">
+        {{ answer4 }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card *ngIf="isCorrect === true">
+    <mat-card-title>Question {{ questionNumber }}</mat-card-title>
+    <div>Correct!</div>
+  </mat-card>
+  <mat-card *ngIf="isCorrect === false">
+    <mat-card-title>Question {{ questionNumber }}</mat-card-title>
+    <div>Try Again!</div>
+  </mat-card>
+</div>
+<div class="main" *ngIf="score >= 100">
+  <mat-card>
+    <h1>You Won!</h1>
+  </mat-card>
+</div>

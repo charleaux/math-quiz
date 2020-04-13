@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "math-quiz"
+  "defaultProject": "math-quiz",
+  "cli": {
+    "analytics": "199e7d0e-082f-44b9-94ed-8b8f4e8c54f4"
+  }
 }
