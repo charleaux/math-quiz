@@ -1,0 +1,7 @@
+.toolbar
+  display: flex
+  max-height: 40px
+  min-height: 40px
+
+.space-between
+  flex-grow: 1
