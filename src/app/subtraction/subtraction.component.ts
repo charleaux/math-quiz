@@ -52,9 +52,17 @@ export class SubtractionComponent implements OnInit {
   onNextQuestion() {
     this.questionNumber += 1;
     const maxGuess = this.maxNumber * 2 < 4 ? 4 : this.maxNumber * 2;
-    this.first = Math.round(Math.random() * this.maxNumber);
-    this.second = Math.round(Math.random() * this.maxNumber);
-    const correctAnswer = this.first - this.second;
+    let correctAnswer = -1;
+    let first = null;
+    let second = null;
+
+    while (correctAnswer < 0) {
+      first = Math.round(Math.random() * this.maxNumber);
+      second = Math.round(Math.random() * this.maxNumber);
+      correctAnswer = first - second;
+    }
+    this.first = first;
+    this.second = second;
 
     let answers = [];
     while (answers.length <= 3) {
