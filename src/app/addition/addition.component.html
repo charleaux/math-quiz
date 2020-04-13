@@ -1,6 +1,7 @@
 <mat-progress-bar mode="determinate" [value]="score"></mat-progress-bar>
-<div>
-  <h1>Level: {{ maxNumber }}</h1>
+<div class="header">
+  <h1>Addition</h1>
+  <h2>Level: {{ maxNumber }}</h2>
 </div>
 <div class="main" *ngIf="score < 100">
   <mat-card *ngIf="isCorrect == null">

@@ -7,3 +7,12 @@
 .space-between {
   flex-grow: 1;
 }
+
+a {
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+.active-link {
+  text-decoration: underline;
+}

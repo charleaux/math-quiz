@@ -1,3 +1,6 @@
+.header {
+  margin: 1rem;
+}
 .main {
   margin-top: 1rem;
   display: flex;
