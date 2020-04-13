@@ -13,7 +13,7 @@ export class ToolbarComponent implements OnInit {
   constructor(private userStateService: UserStateService) {}
 
   ngOnInit(): void {
-    this.possibleUsers = this.userStateService.getPossibleUsers();
+    // this.possibleUsers = this.userStateService.getPossibleUsers();
   }
 
   onNameClick() {

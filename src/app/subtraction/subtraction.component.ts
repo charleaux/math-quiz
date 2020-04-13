@@ -21,7 +21,10 @@ export class SubtractionComponent implements OnInit {
   isCorrect = null;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.onNextQuestion();
+    this.questionNumber = 1;
+  }
 
   onAnswer(answerNumber: number) {
     this.isCorrect = this.first - this.second === answerNumber;
@@ -48,30 +51,43 @@ export class SubtractionComponent implements OnInit {
 
   onNextQuestion() {
     this.questionNumber += 1;
-    const maxGuess = this.maxNumber * 2;
-    this.first = Math.floor(Math.random() * this.maxNumber);
-    this.second = Math.floor(Math.random() * this.maxNumber);
+    const maxGuess = this.maxNumber * 2 < 4 ? 4 : this.maxNumber * 2;
+    this.first = Math.round(Math.random() * this.maxNumber);
+    this.second = Math.round(Math.random() * this.maxNumber);
+    const correctAnswer = this.first - this.second;
 
-    this.answer1 = Math.floor(Math.random() * maxGuess);
-    this.answer2 = Math.floor(Math.random() * maxGuess);
-    this.answer3 = Math.floor(Math.random() * maxGuess);
-    this.answer4 = Math.floor(Math.random() * maxGuess);
+    let answers = [];
+    while (answers.length <= 3) {
+      const sign = Math.round(Math.random() * 2) === 1 ? 1 : -1;
+      const answer = Math.round(Math.random() * maxGuess) * sign;
+
+      if (answer !== correctAnswer) {
+        answers = [...answers, answer];
+        answers = [...new Set([...answers])];
+      }
+    }
+
+    this.answer1 = answers[0];
+    this.answer2 = answers[1];
+    this.answer3 = answers[2];
+    this.answer4 = answers[3];
+
     const rightAnswer = Math.floor(Math.random() * 4);
 
     console.log({ rightAnswer });
 
     switch (rightAnswer) {
       case 0:
-        this.answer1 = this.first - this.second;
+        this.answer1 = correctAnswer;
         break;
       case 1:
-        this.answer2 = this.first - this.second;
+        this.answer2 = correctAnswer;
         break;
       case 2:
-        this.answer3 = this.first - this.second;
+        this.answer3 = correctAnswer;
         break;
       case 3:
-        this.answer4 = this.first - this.second;
+        this.answer4 = correctAnswer;
         break;
       default:
         break;
